@@ -11,6 +11,7 @@ def ping(ip):
     ping_reply = subprocess.run(["ping","-c","2", ip],stderr=subprocess.PIPE, stdout=subprocess.PIPE)   # Linux
     # ping -n 2 172.25.10.217       or  ping -n 2 hostname  this is for Windows
     # ping_reply = subprocess.run(["ping","-n","2", ip],stderr=subprocess.PIPE, stdout=subprocess.PIPE) # Windwos
+    # ping_reply.returncode = 0 or 1
     return ping_reply.returncode
 
 file=open("hosts.txt", "r")
@@ -26,11 +27,11 @@ for line in lines:
     i+=1
     res = ping(line.rstrip())
     if res == 0:
-        statement=print(socket.gethostbyname(line.rstrip()))
+        statement=print('{:15s} ===>> '.format(line.rstrip()),socket.gethostbyname(line.rstrip()))
         worksheet.write('A'+str(i), line.rstrip())
         worksheet.write('B'+str(i), statement)
     else:
-        print('NONE')
+        statement=print('{:15s} ===>> NONE'.format(line.rstrip()))
         worksheet.write('A'+str(i), line.rstrip())
         worksheet.write('B'+str(i), 'NONE')
 workbook.close()
