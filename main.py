@@ -27,11 +27,12 @@ for line in lines:
     i+=1
     res = ping(line.rstrip())
     if res == 0:
-        statement=print('{:25s} ===>> '.format(line.rstrip()),socket.gethostbyname(line.rstrip()))
+        statement=socket.gethostbyname(line.rstrip())
+        print('{:25s} ===>> '.format(line.rstrip()),statement)
         worksheet.write('A'+str(i), line.rstrip())
         worksheet.write('B'+str(i), statement)
     else:
-        statement=print('{:25s} ===>>  NONE'.format(line.rstrip()))
+        print('{:25s} ===>>  NONE'.format(line.rstrip()))
         worksheet.write('A'+str(i), line.rstrip())
         worksheet.write('B'+str(i), 'NONE')
 workbook.close()
