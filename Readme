@@ -1,0 +1,4 @@
+I wrote this script when my supervisor given me about 560 host-names to ping on, so i thought that i could be helpful for those in need of doing a bulk ping
+this script allow You to ping either host-names or @ip and gives back as output their host-names or @Ip as Excel File
+put your @ip or host-names in the 'hosts.txt' file then run the script, wait till it finishes then check 'result.xlsx'
+For those who actually are using windows, You would better to run ./main.py using power-shell as administrator otherwise You may get the following message 'access denied'
